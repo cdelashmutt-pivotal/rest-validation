@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'io.pivotal.pa'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// This includes spring-boot-starter-validation for us, so we don't 
+	// need anything else to use validation
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	//The following are just testing dependencies I used to generate JSON, and 
+	//WebMvcTests
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'com.fasterxml.jackson.core:jackson-databind'
+}
+
+test {
+	useJUnitPlatform()
+}
